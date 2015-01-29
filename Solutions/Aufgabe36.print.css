@@ -1,0 +1,32 @@
+﻿body
+{
+	font-family: Georgia;
+	font-size: 12pt;
+}
+header
+{
+	display: block;
+	width: 100%;
+}
+nav
+{
+	display: none;
+}
+article
+{
+	margin: 0;
+	display: block;
+	border: 0;
+	padding: 0;
+}
+article+footer
+{
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 8pt;
+}
+footer:last-child
+{
+	display: none;
+}

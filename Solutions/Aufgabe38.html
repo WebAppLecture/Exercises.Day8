@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<title>Lösung zur 38. Aufgabe</title>
+<style>
+#dropzone { border: 3px dashed #ccc; height: 100px; border-radius: 15px; }
+#dropzone.hover { border: 3px dashed #333; background: rgba(255, 0, 0, 0.1); }
+#list { border: 1px solid #ccc; background: #eee; border-radius: 15px; margin-top: 15px; min-height: 25px; }
+</style>
+</head>
+<body>
+<div id="dropzone"></div> 
+<div id="list"></div>
+<footer>&copy; <address style="display: inline;">Florian Rappl</address>. Zuletzt aktualisiert am <time datetime="2012-01-09T20:23Z" style="display: inline;">09.01.2012 um 21:23</time></footer>
+<script>
+function createImages(evt) {
+	evt.stopPropagation();
+	evt.preventDefault();
+	this.className = '';
+	
+	for (var i = 0, f; f = evt.dataTransfer.files[i]; i++) {
+		if (!f.type.match('image.*'))
+			continue;
+			
+		var reader = new FileReader();
+		
+		reader.onload = function(e) {
+			var g = document.createElement('img');
+			g.src = e.target.result;
+			document.getElementById('list').appendChild(g);
+
+			//Ajax File Uploader - integriert, läd jedes Bild als base64 String hoch
+			//--- Alternativ kann auch der echte Inhalt hochgeladen werden ---
+//			$.ajax({
+//				url: 'http://example.com',
+//				type: 'POST',
+//				dataType: 'json',
+//				data: { 'image': e.target.result, /* Noch mehr Daten */ }
+//			});
+		};
+
+		reader.readAsDataURL(f);
+    }
+}
+
+var dropZone = document.querySelector('#dropzone');
+
+dropZone.addEventListener('dragover', function (ev) { 
+	this.className = 'hover';
+	ev.stopPropagation(); 
+	ev.preventDefault(); 
+	ev.dataTransfer.dropEffect = 'copy'; }, false);
+dropZone.addEventListener('dragleave', function (ev) {
+	this.className = '';
+	ev.stopPropagation(); 
+	ev.preventDefault(); }, false);
+dropZone.addEventListener('drop', createImages, false);
+</script>
+</body>
+</html>

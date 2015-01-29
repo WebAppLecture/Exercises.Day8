@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Lösung zur 37. Aufgabe</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background: #fff;
+	color: #333;
+	font: 12px Arial, sans-serif;
+}
+
+/* Base padding. */
+#container {
+	padding: 20px;
+}
+
+h1 {
+	font-size: 24px;
+}
+
+p {
+	clear: both;
+	margin: 0 0 20px;
+}
+
+img {
+	border: 0;
+	font-size: 0;
+}
+
+.panels,
+.panels a,
+.panels li {
+	height: 200px;
+	overflow: hidden;
+}
+
+.panels {
+	background: #ddd;
+	margin: 0 0 20px;
+	position: relative;
+	width: 900px;
+}
+
+.panels li {
+	float: left;
+	font-size: 100px;
+	line-height: 200px;
+	list-style: none;
+	text-align: center;
+	width: 180px;
+}
+
+.panels li.last,
+.panels li:last-child {
+	border: 0;
+	float: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.panels a {
+	color: #666;
+	display: block;
+	text-decoration: none;
+	width: 100%;
+}
+
+.panels a:hover {
+	background-color: #bbb;
+	color: #000;
+	font-weight: bold;
+	text-shadow: #fff 0 5px 5px;
+}
+
+.panels,
+.panels li:first-child,
+.panels li:first-child a {
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-webkit-border-top-left-radius: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+}
+
+.panels,
+.panels li:last-child,
+.panels li:last-child a {
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	-moz-border-radius-topright: 20px;
+	-moz-border-radius-bottomright: 20px;
+	-webkit-border-top-right-radius: 20px;
+	-webkit-border-bottom-right-radius: 20px;
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<ul class="panels">
+		<li>
+			<a href="#">1</a>
+		</li>
+		<li>
+			<a href="#">2</a>
+		</li>
+		<li>
+			<a href="#">3</a>
+		</li>
+		<li>
+			<a href="#">4</a>
+		</li>
+		<li>
+			<a href="#">5</a>
+		</li>
+	</ul>
+	<ul class="panels">
+		<li>
+			<a href="#">A</a>
+		</li>
+		<li>
+			<a href="#">B</a>
+		</li>
+		<li>
+			<a href="#">C</a>
+		</li>
+		<li>
+			<a href="#">D</a>
+		</li>
+		<li>
+			<a href="#">E</a>
+		</li>
+	</ul>
+</div>
+<footer>&copy; <address style="display: inline;">Florian Rappl</address>. Zuletzt aktualisiert am <time datetime="2012-01-09T19:02Z" style="display: inline;">09.01.2012 um 20:02</time></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+<script src="Aufgabe37.jquery.panels.js"></script>
+<script>
+$(document).ready(function() {
+	$('.panels').panels();
+});
+</script>
+</body>
+</html>

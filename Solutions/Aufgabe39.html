@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<title>Lösung zur 39. Aufgabe</title>
+<style>
+#canvas
+{
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #CCC;
+	width: 600px;
+	height: 400px;
+}
+</style>
+</head>
+<body>
+<canvas id="canvas" height=400 width=600>
+Der Browser unterstützt noch kein Canvas Element und ist daher veraltet.
+</canvas>
+<div id="controls">
+<div>
+Starte bei x:
+<input type="number" id="xs" value="-2.5" />
+</div>
+<div>
+Ende bei x:
+<input type="number" id="xe" value="1" />
+</div>
+<div>
+Starte bei y:
+<input type="number" id="ys" value="-1" />
+</div>
+<div>
+Ende bei y:
+<input type="number" id="ye" value="1" />
+</div>
+</div>
+<button id="button">Berechnen</button>
+<footer>&copy; <address style="display: inline;">Florian Rappl</address>. Zuletzt aktualisiert am <time datetime="2012-01-09T21:28Z" style="display: inline;">09.01.2012 um 22:28</time></footer>
+<script>
+var worker;
+
+document.getElementById('button').onclick = function() {
+	var ctx = document.getElementById('canvas').getContext('2d');
+
+	if(worker !== undefined) {
+		worker.terminate();
+		worker = null;
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+	}
+		
+	worker = new Worker('Aufgabe39.Worker.js');
+	var imgData = ctx.createImageData(ctx.canvas.width, ctx.canvas.height);
+	
+	worker.onmessage = function(event) {
+		var data = JSON.parse(event.data);
+		
+		for (var i = 0, n = data.length; i < n; i+=1) {
+			var idx = 4 * (data[i][0] + data[i][1] * imgData.width);
+			imgData.data[idx + 0] = data[i][2];
+			imgData.data[idx + 1] = data[i][3];
+			imgData.data[idx + 2] = data[i][4];
+			imgData.data[idx + 3] = 255;
+		}
+		
+		ctx.putImageData(imgData, 0, 0);
+	};
+	
+	worker.postMessage(JSON.stringify({ 
+		xs : parseFloat(document.getElementById('xs').value), 
+		ys : parseFloat(document.getElementById('ys').value), 
+		xe : parseFloat(document.getElementById('xe').value), 
+		ye : parseFloat(document.getElementById('ye').value), 
+		width : parseFloat(document.getElementById('canvas').width), 
+		height : parseFloat(document.getElementById('canvas').height)
+	}));
+};
+</script>
+</body>
+</html>

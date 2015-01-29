@@ -1,0 +1,68 @@
+﻿body
+{
+	position: relative;
+	font-family: Georgia;
+	font-size: 10pt;
+	background: #fff;
+	margin: 0;
+	padding: 0;
+}
+header
+{
+	display: none;
+}
+h2
+{
+	margin: 0;
+	padding: 0;
+}
+nav
+{
+	padding: 0 10px;
+	display: block;
+	border: 0;
+	margin: 0;
+	background: #F9F9F9;
+	border-bottom: 1px solid #CCC;
+}
+nav > ul
+{
+	list-style: none;
+	padding: 0;
+}
+nav li
+{
+	margin: 5px 0;
+}
+nav li > a
+{
+	color: #444;
+}
+nav li > a:hover
+{
+	color: #888;
+	text-decoration: none;
+}
+img
+{
+	max-width: 100%;
+}
+article
+{
+	display: block;
+	width: 100%;
+	border-bottom: 1px solid #0F0;
+	padding: 5px;
+	background: #FFF;
+}
+article+footer /*Wollen nur den ersten ändern*/
+{
+	background: #F9F9F9;
+	width: 100%;
+	text-align: center;
+	font-size: 6pt;
+}
+
+footer:last-child {
+	display: none;
+}
