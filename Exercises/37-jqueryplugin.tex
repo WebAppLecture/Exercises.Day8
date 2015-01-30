@@ -1,0 +1,41 @@
+\Exercise{Ein eigenes jQuery Plugin schreiben}
+%
+\par Es soll ein Plugin für ein sog. Sliding Panel geschrieben werden. Ein
+Sliding Panel (manchmal auch horizontales Accordion genannt) ist eine
+Möglichkeit Informationen zu verpacken um diese bei Bedarf anzuzeigen, z.B.:
+%
+\begin{figure}[!h]
+\centering
+\includegraphics{Exercises/Figures/pluginclose.png}
+\end{figure}
+%
+\par Nach dem Öffnen eines Panels soll sich der Ausschnitt der Seite
+folgendermaßen darstellen:
+%
+\begin{figure}[!h]
+\centering
+\includegraphics{Exercises/Figures/pluginopen.png}
+\end{figure}
+%
+\par Als Grundlage für das Plugin soll folgende HTML-Seite verwendet werden:
+\url{http://html5.florian-rappl.de/Aufgabe38}.html. In dieser Datei sind
+bereits zwei solcher Panels enthalten, zusammengefasst in einer CSS-Klasse
+\jvar{panels}.
+%
+\par Schreiben Sie nun ein jQuery Plugin, welches über eine externe Datei
+(\emph{jquery.panels.js}) eingebunden wird. Anschließend soll das Plugin über
+ein internes Skript auf die beiden Panels angewandt werden. Das Plugin soll
+folgende Eigenschaften besitzen:
+%
+\par Beim Hovern mit der Maus soll der aktuelle Eintrag vergrößert und alle
+anderen verkleinert werden. Hierbei soll der aktuelle Eintrag auf \qty{360}{px}
+mit einer größeren Schriftgröße (z.B. \qty{150}{px}) verbreitert werden. Alle
+anderen Einträge müssen demnach kleiner werden (auch kleinere Schriftgrößen
+verwenden, z.B. \qty{135}{px} und \qty{50}{px}!). Ist die Maus über keinem
+Element so soll die Ausgangsposition wieder eingenommen werden (z.B.
+\qty{180}{px} und \qty{100}{px}). Alle Veränderungen sollen durch Animationen
+mit einer Animationszeit von \qty{200}{ms} angezeigt werden.
+%
+\par Nachdem das Plugin in dieser Fassung funktioniert sollen dynamische
+Optionen durch z.B. verstellbare Größen ermöglicht werden. Verwenden Sie
+hierbei die \jfunc{extend} Methode von jQuery.
